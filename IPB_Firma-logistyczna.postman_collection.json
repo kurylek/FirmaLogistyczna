@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "a6cb6723-6bbf-4eeb-8e10-12640323842e",
+		"name": "IPB_Firma-logistyczna",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24901790",
+		"_collection_link": "https://pjatk-pro.postman.co/workspace/PJATK-PRO~b868244a-be3c-47fc-8f24-9343e81ea477/collection/24901790-a6cb6723-6bbf-4eeb-8e10-12640323842e?action=share&creator=24901790&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "1. Utworzenie klienta1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imie\": \"Klient 1\",\r\n    \"naziwsko\": \"Testowy nadawca\",\r\n    \"adres\": \"Testowy adres\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/klienci",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"klienci"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Utworzenie klienta2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imie\": \"Klient 2\",\r\n    \"naziwsko\": \"Testowy odbiorca\",\r\n    \"adres\": \"Testowy adres\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/klienci",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"klienci"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. Wszyscy klienci",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/klienci/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"klienci",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. Utworzenie zgłoszenia",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idNadawcy\": 1,\r\n    \"idOdbiorcy\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/zgloszenia",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"zgloszenia"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5. Zgloszenie po id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/zgloszenia/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"zgloszenia",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6. Utworzenie paczki",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"wymiary\": \"12cm x 89cm x 2cm\",\r\n    \"idZgloszenia\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/paczki",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"paczki"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7. Paczka po id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/paczki/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"paczki",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8. Nadanie numeru paczce",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idPaczki\": 1,\r\n    \"numerPaczki\": \"S|123\",\r\n    \"wymiary\": \"12cm x 89cm x 2cm\",\r\n    \"idZgloszenia\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/paczki",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"paczki"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "9. Utworzenie planu przewozowego",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idZgloszenia\": [1]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/planPrzewozowy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"planPrzewozowy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "10. Plan przewozowy po id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/planPrzewozowy/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"planPrzewozowy",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
