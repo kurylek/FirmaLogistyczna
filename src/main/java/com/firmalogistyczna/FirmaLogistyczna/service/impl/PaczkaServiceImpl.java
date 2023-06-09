@@ -51,6 +51,11 @@ public class PaczkaServiceImpl implements PaczkaService {
 
     @Override
     public PaczkaDto update(PaczkaDto paczkaDto) {
-        return null;
+        Paczka paczka = repository.getReferenceById(paczkaDto.getIdPaczki());
+
+        paczka.setWymiary(paczkaDto.getWymiary());
+        paczka.setNumerPaczki(paczkaDto.getNumerPaczki());
+
+        return mapper.toDto(paczka);
     }
 }

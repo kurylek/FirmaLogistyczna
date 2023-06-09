@@ -46,6 +46,12 @@ public class KlientServiceImpl implements KlientService {
 
     @Override
     public KlientDto update(KlientDto klientDto) {
-        return null;
+        Klient klient = repository.getReferenceById(klientDto.getIdKlienta());
+
+        klient.setImie(klientDto.getImie());
+        klient.setNaziwsko(klientDto.getNaziwsko());
+        klient.setAdres(klientDto.getAdres());
+
+        return mapper.toDto(klient);
     }
 }

@@ -1,5 +1,6 @@
 package com.firmalogistyczna.FirmaLogistyczna.controller;
 
+import com.firmalogistyczna.FirmaLogistyczna.entity.dto.KlientDto;
 import com.firmalogistyczna.FirmaLogistyczna.entity.dto.PaczkaDto;
 import com.firmalogistyczna.FirmaLogistyczna.service.PaczkaService;
 import lombok.RequiredArgsConstructor;
@@ -29,5 +30,10 @@ public class PaczkaController {
     @PostMapping
     public PaczkaDto add(@RequestBody PaczkaDto paczkaDto) {
         return service.add(paczkaDto);
+    }
+
+    @PutMapping
+    public PaczkaDto update(@RequestBody PaczkaDto paczkaDto) {
+        return service.update(paczkaDto);
     }
 }

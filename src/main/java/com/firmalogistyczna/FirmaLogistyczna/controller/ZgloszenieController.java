@@ -1,5 +1,6 @@
 package com.firmalogistyczna.FirmaLogistyczna.controller;
 
+import com.firmalogistyczna.FirmaLogistyczna.entity.dto.KlientDto;
 import com.firmalogistyczna.FirmaLogistyczna.entity.dto.ZgloszenieDto;
 import com.firmalogistyczna.FirmaLogistyczna.service.ZgloszenieService;
 import lombok.RequiredArgsConstructor;
@@ -29,5 +30,10 @@ public class ZgloszenieController {
     @PostMapping
     public ZgloszenieDto add(@RequestBody ZgloszenieDto zgloszenieDto) {
         return service.add(zgloszenieDto);
+    }
+
+    @PutMapping
+    public ZgloszenieDto update(@RequestBody ZgloszenieDto zgloszenieDto) {
+        return service.update(zgloszenieDto);
     }
 }

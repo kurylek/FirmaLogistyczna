@@ -1,5 +1,6 @@
 package com.firmalogistyczna.FirmaLogistyczna.controller;
 
+import com.firmalogistyczna.FirmaLogistyczna.entity.dto.KlientDto;
 import com.firmalogistyczna.FirmaLogistyczna.entity.dto.PlanPrzewozowyDto;
 import com.firmalogistyczna.FirmaLogistyczna.service.PlanPrzewozowyService;
 import lombok.RequiredArgsConstructor;
@@ -29,5 +30,10 @@ public class PlanPrzewozowyController {
     @PostMapping
     public PlanPrzewozowyDto add(@RequestBody PlanPrzewozowyDto planPrzewozowyDto) {
         return service.add(planPrzewozowyDto);
+    }
+
+    @PutMapping
+    public PlanPrzewozowyDto update(@RequestBody PlanPrzewozowyDto planPrzewozowyDto) {
+        return service.update(planPrzewozowyDto);
     }
 }

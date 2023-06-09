@@ -5,6 +5,7 @@ import com.firmalogistyczna.FirmaLogistyczna.entity.dto.ZgloszenieDto;
 import com.firmalogistyczna.FirmaLogistyczna.mapper.ZgloszenieMapper;
 import com.firmalogistyczna.FirmaLogistyczna.repository.KlientRepository;
 import com.firmalogistyczna.FirmaLogistyczna.repository.PaczkaRepository;
+import com.firmalogistyczna.FirmaLogistyczna.repository.PlanPrzewozowyRepository;
 import com.firmalogistyczna.FirmaLogistyczna.repository.ZgloszenieRepository;
 import com.firmalogistyczna.FirmaLogistyczna.service.ZgloszenieService;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,8 @@ public class ZgloszenieServiceImpl implements ZgloszenieService {
 
     private final ZgloszenieRepository repository;
     private final KlientRepository klientRepository;
+    private final PaczkaRepository paczkaRepository;
+    private final PlanPrzewozowyRepository planPrzewozowyRepository;
     private final ZgloszenieMapper mapper;
 
     @Override
@@ -47,6 +50,13 @@ public class ZgloszenieServiceImpl implements ZgloszenieService {
 
     @Override
     public ZgloszenieDto update(ZgloszenieDto zgloszenieDto) {
-        return null;
+        Zgloszenie zgloszenie = repository.getReferenceById(zgloszenieDto.getIdZgloszenia());
+
+        zgloszenie.setNadawca(klientRepository.getReferenceById(zgloszenieDto.getIdNadawcy()));
+        zgloszenie.setOdbiorca(klientRepository.getReferenceById(zgloszenieDto.getIdOdbiorcy()));
+        zgloszenie.setPaczka(paczkaRepository.getReferenceById(zgloszenieDto.getIdPaczki()));
+        zgloszenie.setPlanPrzewozowy(planPrzewozowyRepository.getReferenceById(zgloszenieDto.getIdPlanuPrzewozowego()));
+
+        return mapper.toDto(zgloszenie);
     }
 }

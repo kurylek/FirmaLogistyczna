@@ -59,6 +59,20 @@ public class PlanPrzewozowyServiceImpl implements PlanPrzewozowyService {
 
     @Override
     public PlanPrzewozowyDto update(PlanPrzewozowyDto planPrzewozowyDto) {
-        return null;
+        PlanPrzewozowy planPrzewozowy = repository.getReferenceById(planPrzewozowyDto.getIdPlanu());
+
+        List<Zgloszenie> listaZgloszen = new ArrayList<>();
+        PlanPrzewozowy finalPlanPrzewozowy = planPrzewozowy;
+        planPrzewozowyDto.getIdZgloszenia().forEach(idZgloszenia -> {
+            Zgloszenie zgloszenie = zgloszenieRepository.findById(idZgloszenia).orElseThrow(EntityNotFoundException::new);
+            listaZgloszen.add(zgloszenie);
+            zgloszenie.setPlanPrzewozowy(finalPlanPrzewozowy);
+            zgloszenieRepository.save(zgloszenie);
+        });
+
+        planPrzewozowy.setZgloszenie(listaZgloszen);
+        planPrzewozowy = repository.save(planPrzewozowy);
+
+        return mapper.toDto(planPrzewozowy);
     }
 }

@@ -32,4 +32,9 @@ public class KlientController {
     public KlientDto add(@RequestBody KlientDto klientDto) {
         return service.add(klientDto);
     }
+
+    @PutMapping
+    public KlientDto updte(@RequestBody KlientDto klientDto) {
+        return service.update(klientDto);
+    }
 }
